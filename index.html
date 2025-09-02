@@ -123,7 +123,7 @@
         }
         
         /* Photo Gallery - Fixed responsive issues */
-.gallery {
+        .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -268,7 +268,7 @@
         }
         
         /* Animations */
-@keyframes fadeIn {
+        @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
@@ -409,12 +409,17 @@
             <div class="signature">With all my love</div>
         </section>
         
-        <!-- Photo Gallery - Made images responsive -->
+        <!-- Photo Gallery with Three Photos -->
         <div class="gallery">
-<div class="photo-frame">
-                <img src="images/photo333.jpg" alt="Her Beautiful Smile" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22300%22 viewBox%3D%220 0 300 300%22%3E%3Crect fill%3D%22%23ff9bc9%22 width%3D%22300%22 height%3D%22300%22%2F%3E%3Ctext fill%3D%22%237e3a5e%22 font-family%3D%22Playfair Display%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dominant-baseline%3D%22middle%22%3EBeautiful Smile%3C%2Ftext%3E%3C%2Fsvg%3E'">
-           <img src="images/photo111.jpg" alt="Her Beautiful Smile" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22300%22 viewBox%3D%220 0 300 300%22%3E%3Crect fill%3D%22%23ff9bc9%22 width%3D%22300%22 height%3D%22300%22%2F%3E%3Ctext fill%3D%22%237e3a5e%22 font-family%3D%22Playfair Display%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dominant-baseline%3D%22middle%22%3EBeautiful Smile%3C%2Ftext%3E%3C%2Fsvg%3E'">
-</div>
+            <div class="photo-frame">
+                <img src="images/photo1.jpg" alt="Beautiful Smile 1">
+            </div>
+            <div class="photo-frame">
+                <img src="images/photo2.jpg" alt="Beautiful Smile 2">
+            </div>
+            <div class="photo-frame">
+                <img src="images/photo333.jpg" alt="Beautiful Smile 3">
+            </div>
         </div>
         
         <!-- YouTube Video Section -->
@@ -422,16 +427,11 @@
             <h3 class="video-title">A Special Birthday Video</h3>
             <div class="video-wrapper">
                 <iframe 
-                    id="birthdayVideo"
-<!--                     src="https://www.youtube.com/watch?v=PXrejr_SK9U&pp=ygU84YCE4YCr4YCb4YCy4YC34YCB4YC74YCF4YC64YCe4YCw4YCZ4YC94YCx4YC44YCU4YCx4YC3IGNvdmVy?rel=0&modestbranding=1"  -->
+                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1" 
+                    title="Birthday Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
-            </div>
-            <div class="video-controls">
-                <button class="video-btn" id="playBtn"><i class="fas fa-play"></i></button>
-                <button class="video-btn" id="pauseBtn"><i class="fas fa-pause"></i></button>
-                <button class="video-btn" id="muteBtn"><i class="fas fa-volume-up"></i></button>
             </div>
         </section>
         
@@ -446,7 +446,7 @@
         
         <!-- Footer -->
         <footer>
-            <p>Made with <span class="hearts">❤️❤️❤️</span>for ချစ်ရပါသောအမြေ့</p>
+            <p>ချစ်ရပါသော<span class="hearts">❤️❤️❤️</span>အတွက်လက်ဆောင်</p>
         </footer>
     </div>
     
@@ -467,43 +467,14 @@
                 const animationDuration = Math.random() * 6 + 4;
                 const animationDelay = Math.random() * 5;
                 
-                heart.style.fontSize = ${size}px;
-                heart.style.left = ${left}vw;
-                heart.style.animationDuration = ${animationDuration}s;
-                heart.style.animationDelay = ${animationDelay}s;
+                heart.style.fontSize = `${size}px`;
+                heart.style.left = `${left}vw`;
+                heart.style.animationDuration = `${animationDuration}s`;
+                heart.style.animationDelay = `${animationDelay}s`;
                 
                 floatingHearts.appendChild(heart);
             }
         }
-        
-        // YouTube Video Controls
-        const video = document.getElementById('birthdayVideo');
-        const playBtn = document.getElementById('playBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        const muteBtn = document.getElementById('muteBtn');
-        let isMuted = false;
-        
-        // Play video
-        playBtn.addEventListener('click', function() {
-            video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-        });
-        
-        // Pause video
-        pauseBtn.addEventListener('click', function() {
-            video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-});
-        
-        // Mute/Unmute video
-        muteBtn.addEventListener('click', function() {
-            if (isMuted) {
-                video.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
-                muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-            } else {
-                video.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
-                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            }
-            isMuted = !isMuted;
-        });
         
         // Add some interactive effects
         document.addEventListener('DOMContentLoaded', function() {
@@ -542,7 +513,3 @@
     </script>
 </body>
 </html>
-
-
-
-
