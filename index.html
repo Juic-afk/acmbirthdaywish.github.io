@@ -226,34 +226,6 @@
             border: none;
         }
         
-        /* Video Player Controls */
-        .video-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .video-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #d44d5c;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: none;
-        }
-        
-        .video-btn:hover {
-            transform: scale(1.1);
-            background: #b33c4a;
-        }
-        
         /* Footer */
         footer {
             text-align: center;
@@ -404,30 +376,43 @@
             
             <div class="burmese-text">
                 ပူတူးလေးရဲ့ဘဝမှာ အိပ်မက်တိုင်းလက်တွေ့ဖြစ်ပြီး ပျော်ရွှင်မှုတွေနဲ့ ပြည့်စုံနေပါစေဗျာ။
-
             </div>
             
-            <div class="signature">အချစ်များစွာဖြင့် koko</div>
+            <div class="signature">From koko</div>
         </section>
         
         <!-- Photo Gallery with Three Photos -->
         <div class="gallery">
             <div class="photo-frame">
-                <img src="images/photo1.jpg" alt="Beautiful Smile 1">
+                <img src="images/photo1.jpg" alt="Beautiful Smile 1" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22300%22 viewBox%3D%220 0 300 300%22%3E%3Crect fill%3D%22%23ff9bc9%22 width%3D%22300%22 height%3D%22300%22%2F%3E%3Ctext fill%3D%22%237e3a5e%22 font-family%3D%22Playfair Display%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dominant-baseline%3D%22middle%22%3EBeautiful Memory 1%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
             <div class="photo-frame">
-                <img src="images/1234.jpg" alt="Beautiful Smile 2">
+                <img src="images/1234.jpg" alt="Beautiful Smile 2" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22300%22 viewBox%3D%220 0 300 300%22%3E%3Crect fill%3D%22%23ff9bc9%22 width%3D%22300%22 height%3D%22300%22%2F%3E%3Ctext fill%3D%22%237e3a5e%22 font-family%3D%22Playfair Display%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dominant-baseline%3D%22middle%22%3EBeautiful Memory 2%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
             <div class="photo-frame">
-                <img src="images/photo333.jpg" alt="Beautiful Smile 3">
+                <img src="images/photo333.jpg" alt="Beautiful Smile 3" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22300%22 viewBox%3D%220 0 300 300%22%3E%3Crect fill%3D%22%23ff9bc9%22 width%3D%22300%22 height%3D%22300%22%2F%3E%3Ctext fill%3D%22%237e3a5e%22 font-family%3D%22Playfair Display%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dominant-baseline%3D%22middle%22%3EBeautiful Memory 3%3C%2Ftext%3E%3C%2Fsvg%3E'">
             </div>
         </div>
         
-        <!-- YouTube Video Section -->
+        <!-- YouTube Video Section - Fixed iframe -->
         <section class="video-container">
             <h3 class="video-title">ပူတူးအတွက် birthday song</h3>
             <div class="video-wrapper">
-                <iframe်
+                <iframe 
+                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1" 
+                    title="Birthday Song for Aye Chan Myae"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+        
+        <!-- Wishes Section -->
+        <section class="wishes">
+            <div class="cake">🎂</div>
+            <h2>အခုမွေးနေ့မှစပြီးကိုကို့ကိုပိုချစ်နိုင်ပါစေ။</h2>
+            <div class="burmese-text">
+                ပူတူးလေးရဲ့ဘဝလမ်းခရီးမှာ အောင်မြင်မှုတွေနဲ့ ပျော်ရွှင်မှုတွေ အမြဲတမ်းရှိပါစေ
             </div>
         </section>
         
@@ -500,5 +485,3 @@
     </script>
 </body>
 </html>
-
-
