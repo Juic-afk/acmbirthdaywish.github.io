@@ -122,9 +122,9 @@
             margin-top: 30px;
         }
         
-        /* Photo Gallery */
-        .gallery {
-display: flex;
+        /* Photo Gallery - Fixed responsive issues */
+.gallery {
+            display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
@@ -132,7 +132,8 @@ display: flex;
         }
         
         .photo-frame {
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             height: 300px;
             border-radius: 10px;
             overflow: hidden;
@@ -144,6 +145,14 @@ display: flex;
         
         .photo-frame:hover {
             transform: scale(1.05);
+        }
+        
+        /* Make images responsive */
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .photo-placeholder {
@@ -178,22 +187,54 @@ display: flex;
             animation: bounce 2s infinite;
         }
         
-        /* Music Player */
-        .music-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* YouTube Video Section */
+        .video-container {
+            padding: 40px 20px;
+            text-align: center;
+            margin: 40px 0;
         }
         
-        .music-btn {
+        .video-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d44d5c;
+            margin-bottom: 20px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-wrapper::before {
+            content: "";
+            display: block;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Video Player Controls */
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .video-btn {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -203,26 +244,14 @@ display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
+            border: none;
         }
         
-        .music-btn:hover {
+        .video-btn:hover {
             transform: scale(1.1);
             background: #b33c4a;
-        }
-        
-        .music-info {
-            font-size: 1rem;
-            color: #7e3a5e;
-            max-width: 0;
-            overflow: hidden;
-            transition: max-width 0.5s;
-            white-space: nowrap;
-        }
-        
-        .music-player:hover .music-info {
-            max-width: 200px;
         }
         
         /* Footer */
@@ -239,7 +268,7 @@ display: flex;
         }
         
         /* Animations */
-        @keyframes fadeIn {
+@keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
@@ -267,7 +296,7 @@ display: flex;
         
         .heart {
             position: absolute;
-color: rgba(212, 77, 92, 0.5);
+            color: rgba(212, 77, 92, 0.5);
             font-size: 20px;
             animation: float 6s ease-in-out infinite;
         }
@@ -283,7 +312,7 @@ color: rgba(212, 77, 92, 0.5);
             }
         }
         
-        /* Responsive Design */
+        /* Responsive Design - Improved photo responsiveness */
         @media (max-width: 768px) {
             h1 {
                 font-size: 3.5rem;
@@ -306,13 +335,13 @@ color: rgba(212, 77, 92, 0.5);
             }
             
             .photo-frame {
-                width: 250px;
+                width: 100%;
+                max-width: 250px;
                 height: 250px;
             }
             
-            .music-player {
-                bottom: 10px;
-                right: 10px;
+            .video-title {
+                font-size: 2rem;
             }
         }
         
@@ -339,7 +368,12 @@ color: rgba(212, 77, 92, 0.5);
             
             .photo-frame {
                 width: 100%;
+                max-width: 100%;
                 height: 250px;
+            }
+            
+            .video-title {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -348,25 +382,12 @@ color: rgba(212, 77, 92, 0.5);
     <!-- Floating Hearts Background -->
     <div class="floating-hearts" id="floatingHearts"></div>
     
-    <!-- Music Player -->
-    <div class="music-player">
-        <div class="music-btn" id="playBtn">
-            <i class="fas fa-play"></i>
-        </div>
-        <div class="music-info">Birthday Song - Click to play</div>
-        <audio id="bgMusic" loop>
-    <source src="audio/birthday-song.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-    </div>
-    
     <div class="container">
         <!-- Header Section -->
         <header class="header">
             <h1>Happy 23th Birthday</h1>
             <div class="birthday-girl">Aye Chan Myae</div>
             <div class="affectionate-name"></div>
-          
         </header>
         
         <!-- Message Section -->
@@ -381,8 +402,6 @@ color: rgba(212, 77, 92, 0.5);
                ကိုကိုအနားမှာအချိန်အကြာဆက်ပြီးချစ်စရာကောင်းပေးနေနိုင်ပါစေ။
             </div>
             
-           
-            
             <div class="burmese-text">
                 ပူတူးလေးရဲ့ဘဝမှာ အိပ်မက်တိုင်းလက်တွေ့ဖြစ်ပြီး ပျော်ရွှင်မှုတွေနဲ့ ပြည့်စုံနေပါစေလို ဆုတောင်းပေးရင်း
             </div>
@@ -390,12 +409,31 @@ color: rgba(212, 77, 92, 0.5);
             <div class="signature">With all my love</div>
         </section>
         
-        <!-- Photo Gallery -->
-<div class="gallery">
-    <div class="photo-frame">
-        <img src="images/photo333.jpg" alt="Her Beautiful Smile">
-    </div>
-</div>        
+        <!-- Photo Gallery - Made images responsive -->
+        <div class="gallery">
+<div class="photo-frame">
+                <img src="images/photo333.jpg" alt="Her Beautiful Smile" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22300%22 height%3D%22300%22 viewBox%3D%220 0 300 300%22%3E%3Crect fill%3D%22%23ff9bc9%22 width%3D%22300%22 height%3D%22300%22%2F%3E%3Ctext fill%3D%22%237e3a5e%22 font-family%3D%22Playfair Display%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dominant-baseline%3D%22middle%22%3EBeautiful Smile%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+        </div>
+        
+        <!-- YouTube Video Section -->
+        <section class="video-container">
+            <h3 class="video-title">A Special Birthday Video</h3>
+            <div class="video-wrapper">
+                <iframe 
+                    id="birthdayVideo"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-controls">
+                <button class="video-btn" id="playBtn"><i class="fas fa-play"></i></button>
+                <button class="video-btn" id="pauseBtn"><i class="fas fa-pause"></i></button>
+                <button class="video-btn" id="muteBtn"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </section>
+        
         <!-- Wishes Section -->
         <section class="wishes">
             <div class="cake">🎂</div>
@@ -437,20 +475,33 @@ color: rgba(212, 77, 92, 0.5);
             }
         }
         
-        // Music player functionality
-        const audio = document.getElementById('bgMusic');
+        // YouTube Video Controls
+        const video = document.getElementById('birthdayVideo');
         const playBtn = document.getElementById('playBtn');
-        let isPlaying = false;
+        const pauseBtn = document.getElementById('pauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        let isMuted = false;
         
+        // Play video
         playBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                audio.pause();
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        });
+        
+        // Pause video
+        pauseBtn.addEventListener('click', function() {
+            video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+});
+        
+        // Mute/Unmute video
+        muteBtn.addEventListener('click', function() {
+            if (isMuted) {
+                video.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+                muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
             } else {
-                audio.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                video.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
             }
-            isPlaying = !isPlaying;
+            isMuted = !isMuted;
         });
         
         // Add some interactive effects
@@ -490,14 +541,3 @@ color: rgba(212, 77, 92, 0.5);
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
