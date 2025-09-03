@@ -418,7 +418,27 @@
             <div class="birthday-girl">Aye Chan Myae</div>
             <div class="affectionate-name"></div>
         </header>
-        
+          <!-- YouTube Video Section - Updated for autoplay without mute -->
+        <section class="video-container">
+            <h3 class="video-title">Birthday song for putuu lay</h3>
+            <div class="video-wrapper">
+                <iframe 
+                    id="birthdayVideo"
+                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1&autoplay=0" 
+                    title="Birthday Song for Aye Chan Myae"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <div class="play-overlay" id="playOverlay">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+            <p id="autoplayMessage" style="margin-top: 15px; font-style: italic; color: #7e3a5e;">
+                Click the play button to start the birthday song with sound
+            </p>
+        </section>
         <!-- Message Section -->
         <section class="message">
             <div class="signature1">To my dearest Aye Chan Myae,</div>
@@ -456,27 +476,7 @@
             </div>
         </div>
         
-        <!-- YouTube Video Section - Updated for autoplay without mute -->
-        <section class="video-container">
-            <h3 class="video-title">Birthday song for putuu lay</h3>
-            <div class="video-wrapper">
-                <iframe 
-                    id="birthdayVideo"
-                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1&autoplay=0" 
-                    title="Birthday Song for Aye Chan Myae"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-                <div class="play-overlay" id="playOverlay">
-                    <div class="play-button">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
-            <p id="autoplayMessage" style="margin-top: 15px; font-style: italic; color: #7e3a5e;">
-                Click the play button to start the birthday song with sound
-            </p>
-        </section>
+      
         
         <!-- Wishes Section -->
         <section class="wishes">
@@ -593,4 +593,5 @@
     </script>
 </body>
 </html>
+
 
