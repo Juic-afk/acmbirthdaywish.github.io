@@ -121,13 +121,7 @@
             color: #d44d5c;
             margin-top: 30px;
         }
-        .signature1 {
-            text-align: left;
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: #d44d5c;
-            margin-top: 30px;
-        }
+        
         /* Photo Gallery - Fixed responsive issues */
         .gallery {
             display: flex;
@@ -296,7 +290,7 @@
         }
         
         @keyframes bounce {
-            0%, 100% { transform: translateY(0; }
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
         
@@ -418,31 +412,10 @@
             <div class="birthday-girl">Aye Chan Myae</div>
             <div class="affectionate-name"></div>
         </header>
-          <!-- YouTube Video Section - Updated for autoplay with sound -->
-        <section class="video-container">
-            <h3 class="video-title">Birthday song for putuu lay</h3>
-            <div class="video-wrapper">
-                <iframe 
-                    id="birthdayVideo"
-                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1&autoplay=1" 
-                    title="Birthday Song for Aye Chan Myae"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-                <div class="play-overlay" id="playOverlay">
-                    <div class="play-button">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
-            <p id="autoplayMessage" style="margin-top: 15px; font-style: italic; color: #7e3a5e; display: none;">
-                Click the play button to start the birthday song
-            </p>
-        </section>
+        
         <!-- Message Section -->
         <section class="message">
-            <div class="signature1">To my dearest Aye Chan Myae,</div>
-           
+            <p>To my dearest Aye Chan Myae,</p>
                        
             <div class="burmese-text">
                 ကိုကိုချစ်တဲ့ပူတူးလေး ဒီနေ့ကျရောက်တဲ့မွေးနေ့မှာပျော်ရွင်ပါစေ။
@@ -476,18 +449,40 @@
             </div>
         </div>
         
+        <!-- YouTube Video Section - Updated for autoplay without mute -->
+        <section class="video-container">
+            <h3 class="video-title">Birthday song for putuu lay</h3>
+            <div class="video-wrapper">
+                <iframe 
+                    id="birthdayVideo"
+                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1&autoplay=0" 
+                    title="Birthday Song for Aye Chan Myae"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <div class="play-overlay" id="playOverlay">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+            <p id="autoplayMessage" style="margin-top: 15px; font-style: italic; color: #7e3a5e;">
+                Click the play button to start the birthday song with sound
+            </p>
+        </section>
+        
         <!-- Wishes Section -->
         <section class="wishes">
             <div class="cake">🎂</div>
             <h2>အခုမွေးနေ့မှစပြီးကိုကို့ကိုပိုချစ်နိုင်ပါစေ။</h2>
             <div class="burmese-text">
-                ကိုယ်တို့ နှောင်နှစ်ပေါင်းများစွာ မွေးနေ့တိုင်းကို အတူတူဖြတ်သန်းကျမယ်နော်<span class="hearts">❤️</span>
+                ကိုတို့ နောင်နှစ်ပေါင်းများစွာ မွေးနေ့တိုင်းကို အတူတူဖြတ်သန်းကျမယ်နော်<span class="hearts">❤️</span>
             </div>
         </section>
-    
+        
         <!-- Footer -->
         <footer>
-            <p>ချစ်ရပါသောပူတူးလေးအတွက်လက်ဆောင်</p>
+            <p>ချစ်ရပါသော<span class="hearts">❤️❤️❤️</span>အတွက်လက်ဆောင်</p>
         </footer>
     </div>
     
@@ -525,19 +520,23 @@
             
             // Try to autoplay with sound when page loads
             setTimeout(() => {
-                // Check if autoplay was successful
-                video.addEventListener('playing', function() {
-                    playOverlay.classList.remove('visible');
-                    autoplayMessage.style.display = 'none';
-                });
+                video.src += "&autoplay=1";
                 
-                // If we don't detect playing within 2 seconds, show play button
+                // Check if autoplay was successful
                 setTimeout(() => {
-                    if (!video.classList.contains('playing')) {
-                        playOverlay.classList.add('visible');
-                        autoplayMessage.style.display = 'block';
-                    }
-                }, 2000);
+                    // If video is not playing after a short delay, show play button
+                    video.addEventListener('playing', function() {
+                        playOverlay.classList.remove('visible');
+                        autoplayMessage.style.display = 'none';
+                    });
+                    
+                    // If we don't detect playing within 2 seconds, show play button
+                    setTimeout(() => {
+                        if (!video.classList.contains('playing')) {
+                            playOverlay.classList.add('visible');
+                        }
+                    }, 2000);
+                }, 500);
             }, 1000);
             
             // Play video when overlay is clicked
@@ -587,4 +586,3 @@
     </script>
 </body>
 </html>
-
