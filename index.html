@@ -296,7 +296,7 @@
         }
         
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
+            0%, 100% { transform: translateY(0; }
             50% { transform: translateY(-20px); }
         }
         
@@ -418,13 +418,13 @@
             <div class="birthday-girl">Aye Chan Myae</div>
             <div class="affectionate-name"></div>
         </header>
-          <!-- YouTube Video Section - Updated for autoplay without mute -->
+          <!-- YouTube Video Section - Updated for autoplay with sound -->
         <section class="video-container">
             <h3 class="video-title">Birthday song for putuu lay</h3>
             <div class="video-wrapper">
                 <iframe 
                     id="birthdayVideo"
-                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1&autoplay=0" 
+                    src="https://www.youtube.com/embed/PXrejr_SK9U?rel=0&modestbranding=1&autoplay=1" 
                     title="Birthday Song for Aye Chan Myae"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -435,8 +435,8 @@
                     </div>
                 </div>
             </div>
-            <p id="autoplayMessage" style="margin-top: 15px; font-style: italic; color: #7e3a5e;">
-                Click the play button to start the birthday song with sound
+            <p id="autoplayMessage" style="margin-top: 15px; font-style: italic; color: #7e3a5e; display: none;">
+                Click the play button to start the birthday song
             </p>
         </section>
         <!-- Message Section -->
@@ -453,7 +453,7 @@
             </div>
             
             <div class="burmese-text">
-                ပူတူးလေးရဲ့ဘဝမှာ မျော်မှန်းထားသမျှအောင်မြင်ပြီး ပျော်ရွှင်မှုတွေနဲ့ ပြည့်စုံနေပါစေဗျာ။
+                ပူတူးလေး�ရဲ့ဘဝမှာ မျော်မှန်းထားသမျှအောင်မြင်ပြီး ပျော်ရွှင်မှုတွေနဲ့ ပြည့်စုံနေပါစေဗျာ။
             </div>
             <div class="burmese-text">
                ကိုကိုနဲ့တွေ့ဖို့ မွေးဖွားလာပေးလို့ကျေးဇူးပါနော်။
@@ -476,14 +476,12 @@
             </div>
         </div>
         
-      
-        
         <!-- Wishes Section -->
         <section class="wishes">
             <div class="cake">🎂</div>
             <h2>အခုမွေးနေ့မှစပြီးကိုကို့ကိုပိုချစ်နိုင်ပါစေ။</h2>
             <div class="burmese-text">
-                ကိုယ်တို့ နှောင်နှစ်ပေါင်းများစွာ မွေးနေ့တိုင်းကို အတူတူဖြတ်သန်းကျမယ်နော်<span class="hearts">❤️</span>
+                ကိုယ်တို့ နှောင်နှစ်ပေါင်းများစွာ မွေး�နေ့တိုင်း�ကို အတူတူဖြတ်သန်းကျမယ်နော်<span class="hearts">❤️</span>
             </div>
         </section>
         
@@ -527,23 +525,19 @@
             
             // Try to autoplay with sound when page loads
             setTimeout(() => {
-                video.src += "&autoplay=1";
-                
                 // Check if autoplay was successful
+                video.addEventListener('playing', function() {
+                    playOverlay.classList.remove('visible');
+                    autoplayMessage.style.display = 'none';
+                });
+                
+                // If we don't detect playing within 2 seconds, show play button
                 setTimeout(() => {
-                    // If video is not playing after a short delay, show play button
-                    video.addEventListener('playing', function() {
-                        playOverlay.classList.remove('visible');
-                        autoplayMessage.style.display = 'none';
-                    });
-                    
-                    // If we don't detect playing within 2 seconds, show play button
-                    setTimeout(() => {
-                        if (!video.classList.contains('playing')) {
-                            playOverlay.classList.add('visible');
-                        }
-                    }, 2000);
-                }, 500);
+                    if (!video.classList.contains('playing')) {
+                        playOverlay.classList.add('visible');
+                        autoplayMessage.style.display = 'block';
+                    }
+                }, 2000);
             }, 1000);
             
             // Play video when overlay is clicked
@@ -593,5 +587,3 @@
     </script>
 </body>
 </html>
-
-
